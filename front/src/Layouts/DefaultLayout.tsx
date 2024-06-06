@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Bug, Download, LayoutGrid, LogOut, Link } from 'lucide-react'
+import { signOut } from 'next-auth/react'
 import NextLink from 'next/link'
 import { ReactNode } from 'react'
 
@@ -23,6 +24,10 @@ interface DefaultLayoutProps {
 }
 
 export function DefaultLayout({ children }: DefaultLayoutProps) {
+  async function handleLogout() {
+    await signOut({ redirect: true, callbackUrl: '/login' })
+  }
+
   return (
     <div className="flex h-screen">
       <aside className="flex flex-col gap-3 w-80 p-6 border-r-[1px]">
@@ -41,10 +46,7 @@ export function DefaultLayout({ children }: DefaultLayoutProps) {
                   className="flex gap-2 items-center cursor-pointer p-3"
                   asChild
                 >
-                  <NextLink
-                    href="/dashboard"
-                    className="flex gap-2 items-center"
-                  >
+                  <NextLink href="/" className="flex gap-2 items-center">
                     <LayoutGrid className="h-4 w-4" />
                     Dashboard
                   </NextLink>
@@ -102,6 +104,7 @@ export function DefaultLayout({ children }: DefaultLayoutProps) {
             <Button
               className="grow flex gap-3 items-center"
               variant="destructive"
+              onClick={handleLogout}
             >
               <LogOut className="h-4 w-4" />
               Logout
