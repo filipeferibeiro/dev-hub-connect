@@ -1,3 +1,4 @@
+import { Logo } from '@/components/Logo'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
@@ -32,10 +33,7 @@ export function DefaultLayout({ children }: DefaultLayoutProps) {
     <div className="flex h-screen">
       <aside className="flex flex-col gap-3 w-80 p-6 border-r-[1px]">
         <div className="flex items-center justify-between">
-          <h1 className="font-bold">
-            <span className="text-2xl">DevHub</span>
-            <span className="text-xs">Connect</span>
-          </h1>
+          <Logo />
           <ThemeSwitcher />
         </div>
         <nav className="grow">
