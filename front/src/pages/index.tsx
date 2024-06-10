@@ -1,7 +1,9 @@
 'use client'
 
 import { PageHeader } from '@/components/PageHeader'
+import { Button } from '@/components/ui/button'
 import { api } from '@/lib/api'
+import { Plus } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 
@@ -19,7 +21,14 @@ export default function Home() {
 
   return (
     <div>
-      <PageHeader title="Dashboard" />
+      <PageHeader.Root>
+        <PageHeader.Title title="Dashboard" />
+        <PageHeader.Actions>
+          <Button variant="outline" size="icon">
+            <Plus className="w-4 h-4" />
+          </Button>
+        </PageHeader.Actions>
+      </PageHeader.Root>
       <p>Seja bem vindo(a), {userName}</p>
       <button onClick={handleCallApi}>Call API</button>
       <p>{JSON.stringify(teste)}</p>

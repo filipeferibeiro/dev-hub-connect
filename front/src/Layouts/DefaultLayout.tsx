@@ -110,7 +110,7 @@ export function DefaultLayout({ children }: DefaultLayoutProps) {
           </div>
         </footer>
       </aside>
-      <main className="p-6 w-full">{children}</main>
+      <main className="p-6 w-full overflow-auto">{children}</main>
     </div>
   )
 }
